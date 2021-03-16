@@ -1,0 +1,28 @@
+---
+- name: Create a sandbox instance
+  hosts: localhost
+  connection: local
+  become: False
+  gather_facts: False
+  vars:
+    key_name: my_keypair
+    instance_type: t2.micro
+    firewall_group_id: sg-03d829ffb469c64d9
+    ami_id: ami-07a0844029df33d7d    #verificar que este ID exista en la zona de disponibilidad
+    aws_region: us-east-2
+    vpc_ids: vpc-da74f8b1
+    cidr_ips: 172.31.0.0
+    aws_access_key: "{{ aws_access_keys }}"
+    aws_secret_key: "{{ aws_secret_keys }}"
+  tasks:
+    - rds:
+        command: create
+        instance_name: new-database
+        db_engine: MySQL
+        size: 10
+        instance_type: db.m1.small
+        username: mysql_admin
+        password: 1nsecure
+        tags:
+          Environment: testing
+          Application: cms  
