@@ -4,7 +4,7 @@
   vars:
     keypair: my_keypair
     instance_type: m1.small
-    security_group: sg-049629132722ff655
+    security_group: sg-cdcf30b8
     image: ami-049e32cfbee0696cd
     
     region: us-east-1
