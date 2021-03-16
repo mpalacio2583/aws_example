@@ -4,32 +4,27 @@
   vars:
     keypair: my_keypair
     instance_type: m1.small
-    security_group: sg-cdcf30b8
-    image: ami-049e32cfbee0696cd
+    firewall.group_id: sg-cdcf30b8
+    ami_id: ami-049e32cfbee0696cd 
+    aws_region: us-east-1
     
-    region: us-east-1
   tasks:
-    - name: Launch instance
-      ec2:
-         key_name: "{{ keypair }}"
-         group_id: "{{ security_group }}"
-         instance_type: "{{ instance_type }}"
-         image: "{{ image }}"
-         wait: true
-         region: "{{ region }}"
-#         vpc_subnet_id: subnet-29e63245
-         assign_public_ip: yes
-      register: ec2
-
-    - name: Add new instance to host group
-      add_host:
-        hostname: "{{ item.public_ip }}"
-        groupname: launched
-      loop: "{{ ec2.instances }}"
-
-    - name: Wait for SSH to come up
-      delegate_to: "{{ item.public_dns_name }}"
-      wait_for_connection:
-        delay: 60
-        timeout: 320
-      loop: "{{ ec2.instances }}"
+  - name: Create an EC2 instance
+    ec2:
+      key_name: "{{keypair}}"
+      region: "{{aws_region}}"
+      group_id: "{{firewall.group_id}}"
+      instance_type: "{{instance_type}}"
+      image: "{{ami_id}}"
+      wait: yes
+      volumes:
+        - device_name: /dev/sda1
+          volume_type: gp2
+          volume_size: 100
+          delete_on_termination: true
+      exact_count: 6
+      count_tag:
+         Name: ansible-demo
+      instance_tags:
+         Name: ansible-demo
+    register: ec2
