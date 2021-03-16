@@ -10,13 +10,13 @@
     vpc_ids: vpc-da74f8b1
     cidr_ips: 172.31.0.0/16
   tasks:
-  - name: Provision instance
-    ec2:
-#      aws_access_key: "{{ aws_access_key }}"
-#      aws_secret_key: "{{ aws_secret_key }}"
-      key_name: "{{key_name}}"
-      instance_type: "{{m1.small}}"
-      image: "{{ami_id}}"
-      wait: yes
-      count: 1
-      region: "{{aws_region}}"
+    - name: Provision instance
+      ec2:
+#        aws_access_key: "{{ aws_access_key }}"
+#        aws_secret_key: "{{ aws_secret_key }}"
+        key_name: "{{key_name}}"
+        instance_type: "{{m1.small}}"
+        image: "{{ami_id}}"
+        wait: yes
+        count: 1
+        region: "{{aws_region}}"
