@@ -9,7 +9,7 @@
     region: us-east-1
   tasks:
     - name: Launch instance
-      amazon.aws.ec2:
+      ec2:
          key_name: "{{ keypair }}"
          group: "{{ security_group }}"
          instance_type: "{{ instance_type }}"
