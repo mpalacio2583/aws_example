@@ -1,3 +1,4 @@
+---
 - name: Create a sandbox instance
   hosts: localhost
   gather_facts: False
@@ -14,9 +15,9 @@
       ec2:
 #        aws_access_key: "{{ aws_access_key }}"
 #        aws_secret_key: "{{ aws_secret_key }}"
-        key_name: "{{key_name}}"
-        instance_type: "{{m1.small}}"
-        image: "{{ami_id}}"
+        key_name: "{{ key_name }}"
+        instance_type: "{{ m1.small }}"
+        image: "{{ ami_id }}"
         wait: yes
         count: 1
-        region: "{{aws_region}}"
+        region: "{{ aws_region }}"
