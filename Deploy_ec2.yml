@@ -4,7 +4,7 @@
   vars:
     keypair: my_keypair
     instance_type: m1.small
-    firewall.group_id: sg-cdcf30b8
+    firewall_group_id: sg-cdcf30b8
     ami_id: ami-049e32cfbee0696cd 
     aws_region: us-east-1
     
@@ -13,7 +13,7 @@
     ec2:
       key_name: "{{keypair}}"
       region: "{{aws_region}}"
-      group_id: "{{firewall.group_id}}"
+      group_id: "{{firewall_group_id}}"
       instance_type: "{{instance_type}}"
       image: "{{ami_id}}"
       wait: yes
