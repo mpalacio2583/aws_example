@@ -5,9 +5,10 @@
     keypair: my_keypair
     instance_type: m1.small
     firewall_group_id: sg-cdcf30b8
-    ami_id: ami-07a0844029df33d7d #verificar que este ID exista en la zona de disponibilidad
+    ami_id: ami-07a0844029df33d7d 
+#verificar que este ID exista en la zona de disponibilidad
     aws_region: us-east-2
-    vpc_ids: "vpc-da74f8b1"
+    vpc_ids: vpc-da74f8b1
     cidr_ips: 172.31.0.0
     aws_access_key: AKIA2BW734Q34VCTYNR7
     aws_secret_key: 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
