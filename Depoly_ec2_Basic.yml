@@ -1,6 +1,7 @@
 ---
 - name: Create a sandbox instance
-  hosts: local
+  hosts: localhost
+  connection: local
   gather_facts: False
   vars:
     key_name: my_keypair
