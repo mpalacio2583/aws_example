@@ -12,11 +12,13 @@
     aws_region: us-east-2
     vpc_ids: vpc-da74f8b1
     cidr_ips: 172.31.0.0
+    aws_access_key: "{{ aws_access_keys }}"
+    aws_secret_key: "{{ aws_secret_keys }}"
   tasks:
     - name: Provision instance
       ec2:
-#        aws_access_key: "{{ aws_access_key }}"
-#        aws_secret_key: "{{ aws_secret_key }}"
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
         key_name: "{{ key_name }}"
         instance_type: "{{ instance_type }}"
         image: "{{ ami_id }}"
