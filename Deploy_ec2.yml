@@ -7,8 +7,28 @@
     firewall_group_id: sg-cdcf30b8
     ami_id: ami-049e32cfbee0696cd 
     aws_region: us-east-1
-    
+    vpc_ids: vpc-da74f8b1
+    cidr_ip: 172.31.0.0/16
   tasks:
+  - name: Create a security group
+    ec2_group:
+      name: ansible
+      description: "Ansible Security Group"
+      region: "{{aws_region}}"
+      vpc_id: "{{vpc_ids}}"
+#      aws_access_key: "{{aws_access_key}}"
+#      aws_secret_key: "{{aws_secret_key}}"
+      rules:
+        - proto: all
+          cidr_ip: {{cidr_ip}}
+        - proto: all
+          group_name: ansible
+      rules_egress:
+        - proto: all
+          cidr_ip: 0.0.0.0/0
+    register: firewall
+
+  
   - name: Create an EC2 instance
     ec2:
       key_name: "{{keypair}}"
