@@ -20,6 +20,8 @@
         instance_name: new-database
         db_engine: MySQL
         region: "{{ aws_region }}"
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
         size: 10
         instance_type: db.m1.small
         username: mysql_admin
