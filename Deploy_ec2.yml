@@ -9,6 +9,8 @@
     aws_region: us-east-1
     vpc_ids: "vpc-da74f8b1"
     cidr_ips: 172.31.0.0
+    aws_access_key: AKIA2BW734Q34VCTYNR7
+    aws_secret_key: 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
   tasks:
   - name: Create a security group
     ec2_group:
@@ -16,8 +18,8 @@
       description: "Ansible Security Group"
       region: "{{aws_region}}"
       vpc_id: "{{vpc_ids}}"
-#      aws_access_key: "{{aws_access_key}}"
-#      aws_secret_key: "{{aws_secret_key}}"
+      aws_access_key: "{{aws_access_key}}"
+      aws_secret_key: "{{aws_secret_key}}"
       rules:
         - proto: tcp
           ports:
