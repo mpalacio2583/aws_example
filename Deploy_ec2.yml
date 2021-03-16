@@ -7,7 +7,7 @@
     firewall_group_id: sg-cdcf30b8
     ami_id: ami-049e32cfbee0696cd 
     aws_region: us-east-1
-    vpc_ids: vpc-da74f8b1
+    vpc_ids: "vpc-da74f8b1"
     cidr_ips: 172.31.0.0
   tasks:
   - name: Create a security group
