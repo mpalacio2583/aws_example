@@ -24,7 +24,7 @@
         image: "{{ ami_id }}"
         region: "{{ aws_region }}"
         wait: yes
-        group: Ansible
+        group_id: "{{ firewall_group_id }}"
         count: 1
         vpc_subnet_id: subnet-3974a652
         assign_public_ip: yes
