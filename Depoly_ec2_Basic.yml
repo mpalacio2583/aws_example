@@ -9,7 +9,7 @@
     ami_id: ami-07a0844029df33d7d    #verificar que este ID exista en la zona de disponibilidad
     aws_region: us-east-2
     vpc_ids: vpc-da74f8b1
-    cidr_ips: 172.31.0.0/16
+    cidr_ips: 172.31.0.0
   tasks:
     - name: Provision instance
       ec2:
