@@ -6,6 +6,7 @@
     instance_type: m1.small
     security_group: my_securitygroup
     image: ami-049e32cfbee0696cd
+    
     region: us-east-1
   tasks:
     - name: Launch instance
@@ -16,7 +17,7 @@
          image: "{{ image }}"
          wait: true
          region: "{{ region }}"
-         vpc_subnet_id: subnet-29e63245
+#         vpc_subnet_id: subnet-29e63245
          assign_public_ip: yes
       register: ec2
 
