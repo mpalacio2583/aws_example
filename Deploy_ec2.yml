@@ -8,7 +8,7 @@
     ami_id: ami-049e32cfbee0696cd 
     aws_region: us-east-1
     vpc_ids: vpc-da74f8b1
-    cidr_ip: 172.31.0.0/16
+    cidr_ips: 172.31.0.0/16
   tasks:
   - name: Create a security group
     ec2_group:
@@ -20,7 +20,7 @@
 #      aws_secret_key: "{{aws_secret_key}}"
       rules:
         - proto: all
-          cidr_ip: {{cidr_ip}}
+          cidr_ip: {{cidr_ips}}
         - proto: all
           group_name: ansible
       rules_egress:
