@@ -26,5 +26,5 @@
         wait: yes
         group: Ansible
         count: 1
-        vpc_subnet_id: default
+        vpc_subnet_id: subnet-3974a652
         assign_public_ip: yes
