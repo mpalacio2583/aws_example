@@ -23,7 +23,8 @@
           ports:
             - 22
           cidr_ip: "{{cidr_ips}}/16"
-          rule_desc: "allow port 22 from {{ ipify_public_ip }}"
+          assign_public_ip: yes
+#          rule_desc: "allow port 22 from {{ ipify_public_ip }}"
 #        - proto: all
 #          group_name: ansible
 #      rules_egress:
