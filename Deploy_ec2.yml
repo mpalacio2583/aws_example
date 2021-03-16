@@ -32,19 +32,3 @@
         delay: 60
         timeout: 320
       loop: "{{ ec2.instances }}"
-
-- name: Configure instance(s)
-  hosts: launched
-  become: True
-  gather_facts: True
-  roles:
-    - my_awesome_role
-    - my_awesome_test
-
-- name: Terminate instances
-  hosts: localhost
-  tasks:
-    - name: Terminate instances that were previously launched
-      amazon.aws.ec2:
-        state: 'absent'
-        instance_ids: '{{ ec2.instance_ids }}'
