@@ -33,7 +33,6 @@
     register: basic_firewall
 
   - name: create an EC2 instance
-    local_action:
     ec2:
       key_name: "{{key_name}}"
       region: "{{aws_region}}"
