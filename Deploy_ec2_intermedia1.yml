@@ -17,7 +17,7 @@
   tasks:
   - name: Create security group
     ec2_group:
-      name: *my-security-group*
+      name: "{{ key_name }}"
       description: "A Security group"
       region: "{{aws_region}}"
       rules:
