@@ -17,7 +17,7 @@
   tasks:
   - name: Create security group
     ec2_group:
-      name: "{{ key_name }}"
+      name: "{{ firewall_group_id }}"
       description: "A Security group"
       region: "{{aws_region}}"
       rules:
@@ -34,7 +34,7 @@
     ec2:
       key_name: "{{key_name}}"
       region: "{{aws_region}}"
-      group_id: "{{basic_firewall.group_id}}"
+      group_id: "{{firewall.group_id}}"
       instance_type: "{{instance_type}}"
       image: "{{ami_id}}"
       wait: yes
