@@ -1,0 +1,44 @@
+# Basic provisioning example
+- name: Create AWS resources
+  hosts: localhost
+  connection: local
+  gather_facts: False  
+  vars:
+    key_name: my_keypair
+    instance_type: t2.micro
+    firewall_group_id: sg-03d829ffb469c64d9
+    ami_id: ami-07a0844029df33d7d    #verificar que este ID exista en la zona de disponibilidad
+    aws_region: us-east-2
+    vpc_ids: vpc-da74f8b1
+    cidr_ips: 172.31.0.0
+    aws_access_key: "{{ aws_access_keys }}"
+    aws_secret_key: "{{ aws_secret_keys }}"
+    
+  tasks:
+  - name: Create security group
+      module: ec2_group
+      name: *my-security-group*
+      description: "A Security group"
+      region: "{{aws_region}}"
+      rules:
+        - proto: tcp
+          type: ssh
+          from_port: 22
+          to_port: 22
+          cidr_ip: 0.0.0.0/0
+      rules_egress:
+        - proto: all
+          type: all
+          cidr_ip: 0.0.0.0/0
+    register: basic_firewall
+
+  - name: create an EC2 instance
+    local_action:
+      module: ec2
+      key_name: "{{key_name}}"
+      region: "{{aws_region}}"
+      group_id: "{{basic_firewall.group_id}}"
+      instance_type: "{{instance_type}}"
+      image: "{{ami_id}}"
+      wait: yes
+    register: basic_ec2
