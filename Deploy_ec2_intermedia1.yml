@@ -43,3 +43,7 @@
       image: "{{ami_id}}"
       wait: yes
     register: basic_ec2
+    
+  - name: Dump public IP for VM which will be created
+    debug:
+      msg: "The public IP is {{ basic_ec2 }}."
