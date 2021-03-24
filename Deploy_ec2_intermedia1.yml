@@ -16,7 +16,7 @@
     
   tasks:
   - name: Create security group
-      module: ec2_group
+    ec2_group:
       name: *my-security-group*
       description: "A Security group"
       region: "{{aws_region}}"
@@ -34,7 +34,7 @@
 
   - name: create an EC2 instance
     local_action:
-      module: ec2
+    ec2:
       key_name: "{{key_name}}"
       region: "{{aws_region}}"
       group_id: "{{basic_firewall.group_id}}"
