@@ -6,7 +6,8 @@
   vars:
     key_name: my_keypair
     instance_type: t2.micro
-    firewall_group_id: sg-03d829ffb469c64d9
+    firewall_group_name: ansible1
+#    firewall_group_id: sg-03d829ffb469c64d9
     ami_id: ami-07a0844029df33d7d    #verificar que este ID exista en la zona de disponibilidad
     aws_region: us-east-2
     vpc_ids: vpc-da74f8b1
@@ -17,7 +18,7 @@
   tasks:
   - name: Create security group
     ec2_group:
-      name: "{{ firewall_group_id }}"
+      name: "{{ firewall_group_name }}"
       description: "A Security group"
       region: "{{aws_region}}"
       rules:
@@ -34,7 +35,7 @@
     ec2:
       key_name: "{{key_name}}"
       region: "{{aws_region}}"
-      group_id: "{{firewall.group_id}}"
+      group_id: "{{basic_firewall.group_id}}"
       instance_type: "{{instance_type}}"
       image: "{{ami_id}}"
       wait: yes
