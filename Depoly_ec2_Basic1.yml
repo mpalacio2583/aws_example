@@ -16,8 +16,3 @@
       image: ami-089c6f2e3866f0f14   # Ingrese el Type "{{ami_id}}"
       wait: yes
     register: basic_ec2
-    
-#  - name: Dump public IP for VM which will be created
-#    debug:
-#      msg: "The public IP is {{ basic_ec2}}."
-#      msg: "The public IP is {{ basic_ec2.public_ip }}"
