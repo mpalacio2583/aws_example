@@ -1,0 +1,19 @@
+# Basic provisioning example
+- name: Create AWS resources
+  hosts: localhost
+  connection: local
+  gather_facts: False
+   
+  tasks:
+  - name: create an EC2 instance
+    ec2:
+      instance_tags:
+        Name:  ec2_prueba                  #ingrese el nombre de la instancia
+      key_name: ansible           #Ingrese la llave con nombre my_keypair
+      region: us-east-1                #Ingrese la región de AWS.
+      group_id: sg-0ef7a820b2e70573c   #Ingrese el group ID
+      instance_type: t2.micro          # Ingrese el type.
+      image: ami-0533f2ba8a1995cf9    # Ingrese el ami ID.
+      wait: yes
+      vpc_subnet_id: subnet-08c5a05c2d4929420
+    register: basic_ec2
