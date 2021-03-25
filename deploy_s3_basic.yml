@@ -5,6 +5,6 @@
     tasks:
       - name: Create new bucket
         aws_s3:
-          bucket: prueba_12344567788
+          bucket: mauricio-15274168
           mode: create
           region: us-east-2
