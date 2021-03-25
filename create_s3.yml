@@ -12,3 +12,4 @@
           bucket: "{{ bucket_var }}"
           mode: create
           region: us-east-1
+        register: basic_s3
