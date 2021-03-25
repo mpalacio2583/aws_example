@@ -1,0 +1,34 @@
+# Basic provisioning example
+- name: Create AWS resources
+  hosts: localhost
+  connection: local
+  gather_facts: False  
+    
+  tasks:
+  - name: Create a security group
+    ec2_group:
+      name: ansible             #ingrese el nombre de security group"{{ group_name }}"
+      description: "Ansible Security Group"
+      region: us-east-2          #Ingrese la región donde se va a desplegar "{{aws_region}}"
+      vpc_id:                    #Ingrese el ID de la VPC "{{vpc_ids}}"
+      rules:
+        - proto: all
+          cidr_ip:               #Ingrese el cidr IP {{cidr_ips}}
+        - proto: all
+          group_name: ansible
+      rules_egress:
+        - proto: all
+          cidr_ip: 0.0.0.0/0
+    register: firewall
+    
+  - name: create an EC2 instance
+    ec2:
+      instance_tags:
+        Name: Prueba AWS             #ingrese el nombre de la instancia"{{ ec2_name }}"
+      key_name: my_keypair           #Ingrese el nombre de la llave con nombre my_keypair "{{key_name}}"
+      region: us-east-2              #Ingrese la región donde se va a desplegar "{{aws_region}}"
+      group_id: sg-7df00908          #Ingrese el group ID  "{{basic_firewall.group_id}}"
+      instance_type: t2.micro        # Ingrese el type "{{instance_type}}"
+      image: ami-089c6f2e3866f0f14   # Ingrese el Type "{{ami_id}}"
+      wait: yes
+    register: basic_ec2
