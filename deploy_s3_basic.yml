@@ -1,0 +1,10 @@
+  - name: Test s3
+    hosts: localhost
+    connection: local
+      
+    tasks:
+      - name: Create new bucket
+        aws_s3:
+          bucket: prueba_12344567788
+          mode: create
+          region: us-east-12
