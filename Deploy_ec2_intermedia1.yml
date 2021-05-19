@@ -19,7 +19,7 @@
 #    cidr_ips: 172.31.0.0
 #    aws_access_key: "{{ aws_access_keys }}"
 #    aws_secret_key: "{{ aws_secret_keys }}"
-#    ec2_name: "{{ bucket_name }}"
+    ec2_name: "{{ bucket_name }}"
     
   tasks:
   - name: Create security group
