@@ -4,12 +4,12 @@
   connection: local
   gather_facts: False  
   vars:
-    key_name: "{{ key_name_var }}"
-    instance_type: "{{ instance_type_var }}"
-    firewall_group_name: "{{ firewall_group_name_var }}"
-#    key_name: my_keypair
-#    instance_type: t2.micro
-#    firewall_group_name: ansible_prueba
+#    key_name: "{{ key_name_var }}"
+#    instance_type: "{{ instance_type_var }}"
+#    firewall_group_name: "{{ firewall_group_name_var }}"
+    key_name: my_keypair
+    instance_type: t2.micro
+    firewall_group_name: ansible_prueba
 #    firewall_group_id: sg-03d829ffb469c64d9
 #    ami_id: ami-07a0844029df33d7d    #verificar que este ID exista en la zona de disponibilidad (shaggy2583)
     ami_id: "{{ firewall_group_name_var }}"    #verificar que este ID exista en la zona de disponibilidad (mauro2583-prueba)
