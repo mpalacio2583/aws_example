@@ -12,10 +12,10 @@
       instance_tags:
         Name: "{{ name_ec2 }}"                  #ingrese el nombre de la instancia
       key_name: my_keypair           #Ingrese la llave con nombre my_keypair
-      region: us-east-1                #Ingrese la región de AWS.
-      group_id: sg-0ef7a820b2e70573c   #Ingrese el group ID
+      region: us-east-2                #Ingrese la región de AWS.
+      group_id: sg-0b73a81245dba7c19   #Ingrese el group ID
       instance_type: t2.micro          # Ingrese el type.
-      image: ami-0533f2ba8a1995cf9    # Ingrese el ami ID.
+      image: ami-00cbb7bf4617ee51d    # Ingrese el ami ID.
       wait: yes
       vpc_subnet_id: subnet-08c5a05c2d4929420
     register: basic_ec2
