@@ -3,12 +3,14 @@
   hosts: localhost
   connection: local
   gather_facts: False
+  vars:
+    name-ec2: "{{ name_mv }}"
    
   tasks:
   - name: create an EC2 instance
     ec2:
       instance_tags:
-        Name:  ec2_prueba                  #ingrese el nombre de la instancia
+        Name:  "{{ name-ec2 }}"                  #ingrese el nombre de la instancia
       key_name: ansible           #Ingrese la llave con nombre my_keypair
       region: us-east-1                #Ingrese la región de AWS.
       group_id: sg-0ef7a820b2e70573c   #Ingrese el group ID
