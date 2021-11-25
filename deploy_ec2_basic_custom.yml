@@ -11,7 +11,7 @@
     ec2:
       instance_tags:
         Name:  "{{ name-ec2 }}"                  #ingrese el nombre de la instancia
-      key_name: ansible           #Ingrese la llave con nombre my_keypair
+      key_name: my_keypair           #Ingrese la llave con nombre my_keypair
       region: us-east-1                #Ingrese la región de AWS.
       group_id: sg-0ef7a820b2e70573c   #Ingrese el group ID
       instance_type: t2.micro          # Ingrese el type.
