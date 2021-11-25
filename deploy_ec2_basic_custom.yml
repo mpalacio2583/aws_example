@@ -17,5 +17,5 @@
       instance_type: t2.micro          # Ingrese el type.
       image: ami-00cbb7bf4617ee51d    # Ingrese el ami ID.
       wait: yes
-      vpc_subnet_id: subnet-08c5a05c2d4929420
+      vpc_subnet_id: subnet-824712ce
     register: basic_ec2
