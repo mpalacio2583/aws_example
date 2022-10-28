@@ -1,0 +1,28 @@
+- name: launch an ec2 instance for kubernetes master node
+  hosts: localhost
+  become: false
+  vars:
+#    keypair: aws-arth-key 
+#    instance_type: t2.medium
+#    my_eks_role : "{{ eksClusterRole }}"
+#    image: ami-00bf4ae5a7909786c
+#    vpc_subnet_id: subnet-0f20d73e825bd2692
+#    security_group_id: sg-0344355829b3965a2
+#    region: ap-south-1
+#    output_dir: /home/devops/ansible-kubernetes-cluster-aws 
+
+  tasks:
+    - name: Create an EKS cluster
+      community.aws.aws_eks_cluster:
+        name: my_cluster
+        version: 1.23
+#        role_arn: "{{ my_eks_role }}"
+        role_arn: my_eks_role
+        subnets:
+          - subnet-05a84c685181499c1
+          - subnet-0b0a698cc50fad57d
+          - subnet-04d781831ca8bb1da
+          - subnet-0261f6285573c3773
+        security_groups:
+          - sg-07bbcdce55fdf61cf
+      register: caller_facts
