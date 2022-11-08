@@ -1,15 +1,10 @@
----
   - name: Test s3
     hosts: localhost
     connection: local
-    
-    vars:
-      bucket_var: "{{ bucket_name }}"
-      
+          
     tasks:
       - name: Create new bucket
         aws_s3:
-          bucket: "{{ bucket_var }}"
+          bucket:  "{{ bucket_name }}"
           mode: create
           region: us-east-2
-        register: basic_s3
