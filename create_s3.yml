@@ -11,5 +11,5 @@
         aws_s3:
           bucket: "{{ bucket_var }}"
           mode: create
-          region: us-east-1
+          region: us-east-2
         register: basic_s3
